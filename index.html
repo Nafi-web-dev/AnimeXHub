@@ -6,132 +6,123 @@
 <title>AnimeXHub</title>
 
 <style>
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: system-ui, sans-serif;
+}
 
-  body{
-    background: linear-gradient(180deg, #020617, #0f172a);
-    color: white;
-  }
+body{
+  background:#0b1220;
+  color:white;
+}
 
-  /* NAVBAR */
-  header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: #020617;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #1f2937;
-  }
+/* NAVBAR */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  background:#020617;
+  border-bottom:1px solid #1f2937;
+}
 
-  .logo{
-    font-size: 26px;
-    font-weight: bold;
-    color: #facc15;
-  }
+.logo{
+  color:#facc15;
+  font-size:22px;
+  font-weight:bold;
+}
 
-  .profile{
-    font-size: 20px;
-  }
+/* CONTAINER */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
 
-  /* CONTAINER */
-  .container{
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-  }
+/* TITLE */
+h1{
+  font-size:20px;
+  margin-bottom:15px;
+}
 
-  h1{
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
+h1 span{
+  color:#facc15;
+}
 
-  h1 span{
-    color: #facc15;
-  }
+/* GRID FIX */
+.anime-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 160px));
+  justify-content:center;   /* 🔥 CENTER FIX */
+  gap:15px;
+}
 
-  /* GRID */
+/* CARD */
+.card{
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid #1f2937;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#facc15;
+}
+
+/* IMAGE FIX */
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover; /* 🔥 IMPORTANT */
+}
+
+/* TAGS */
+.tag, .episode{
+  position:absolute;
+  background:#facc15;
+  color:black;
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.tag{
+  top:8px;
+  left:8px;
+}
+
+.episode{
+  bottom:8px;
+  left:8px;
+}
+
+/* FLOAT */
+.floating{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  background:#6366f1;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 🔥 EXTRA DESKTOP FIX */
+@media (min-width: 768px){
   .anime-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 170px));
+    justify-content:center;
   }
-
-  /* CARD (POSTER STYLE) */
-  .card{
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #1f2937;
-    position: relative;
-    transition: 0.3s;
-  }
-
-  .card:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    border-color: #facc15;
-  }
-
-  .card img{
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* REMOVE EXTRA SPACE */
-  .card-content{
-    display: none;
-  }
-
-  .tag, .episode{
-    position: absolute;
-    background: #facc15;
-    color: black;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 8px;
-  }
-
-  .tag{
-    top: 10px;
-    left: 10px;
-  }
-
-  .episode{
-    bottom: 10px;
-    left: 10px;
-  }
-
-  /* FLOAT BUTTON */
-  .floating{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #6366f1;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  }
-
-  .floating:hover{
-    transform: scale(1.1);
-  }
-
+}
 </style>
 </head>
 
@@ -139,25 +130,34 @@
 
 <header>
   <div class="logo">AnimeXHub</div>
-  <div class="profile">👤</div>
+  <div>👤</div>
 </header>
 
 <div class="container">
+  
   <h1>Results for <span>Anime</span></h1>
-
+  
   <div class="anime-grid">
-
-    <a href="drstone.html" style="text-decoration:none; color:white;">
+    
+    <a href="the-summer-hikaru-died-season.html">
       <div class="card">
-        <img src="dr.stone.jpeg" alt="Dr Stone">
+        <img src="the-summer-hikaru-died.jpeg" alt="The Summer Hikaru Died">
+        <div class="tag">New</div>
+        <div class="episode">S1-EP12</div>
+      </div>
+    </a>
+    
+    <a href="dr.stoneseason.html">
+      <div class="card">
+        <img src="dr.stone.jpeg" alt="">
         <div class="tag">Multi-Audio</div>
         <div class="episode">S4-EP26</div>
       </div>
     </a>
-
+    
   </div>
+  
 </div>
-
 <div class="floating">📺</div>
 
 </body>
