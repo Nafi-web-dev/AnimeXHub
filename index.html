@@ -16,16 +16,22 @@
 body{
   background:#0b1220;
   color:white;
+  animation:pageIn 0.4s ease;
 }
 
-/* NAVBAR */
+@keyframes pageIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* HEADER */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   padding:12px 20px;
   background:#020617;
   border-bottom:1px solid #1f2937;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
@@ -34,71 +40,263 @@ header{
   font-weight:bold;
 }
 
-/* CONTAINER */
+.profile{
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* SEARCH */
+.search-box{
+  display:flex;
+  justify-content:center;
+  margin:15px 0;
+  position:relative;
+}
+
+.search-box input{
+  width:90%;
+  max-width:400px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #334155;
+  background:#0f172a;
+  color:white;
+}
+
+/* SUGGESTIONS */
+.suggestions{
+  position:absolute;
+  top:45px;
+  width:90%;
+  max-width:400px;
+  background:#020617;
+  border:1px solid #1f2937;
+  border-radius:10px;
+  display:none;
+  overflow:hidden;
+  z-index:1000;
+}
+
+.suggestion-item{
+  padding:10px;
+  cursor:pointer;
+  border-bottom:1px solid #1f2937;
+}
+
+.suggestion-item:hover{
+  background:#1e293b;
+}
+
+/* BATCH */
+.batch{
+  margin:10px 20px 0;
+  color:#FFFFFF;
+  font-weight:800;
+  font-size:20px;
+}
+
+/* GRID */
 .container{
   max-width:1000px;
   margin:auto;
   padding:20px;
 }
 
-/* TITLE */
-h1{
-  font-size:20px;
-  margin-bottom:15px;
-}
-
-h1 span{
-  color:#facc15;
-}
-
-/* GRID FIX */
 .anime-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 160px));
-  justify-content:center;   /* 🔥 CENTER FIX */
+  grid-template-columns: repeat(auto-fit, minmax(140px,160px));
   gap:15px;
+  justify-content:center;
 }
 
-/* CARD */
+/* CARD WRAP */
+.card-wrap{
+  position:relative;
+}
+
+/* CARD (IMPORTANT FIX HERE) */
 .card{
-  width:100%;
+  border:1.5px solid #facc15;
   border-radius:12px;
   overflow:hidden;
-  position:relative;
-  border:1px solid #1f2937;
-  transition:0.3s;
+  background:#111827;
+  transition:0.15s;
+
+  position:relative; /* 🔥 FIX */
 }
 
-.card:hover{
-  transform:translateY(-5px);
-  border-color:#facc15;
+.card:active{
+  transform:scale(0.96);
 }
 
-/* IMAGE FIX */
 .card img{
   width:100%;
-  height:260px;
-  object-fit:cover; /* 🔥 IMPORTANT */
+  height:240px;
+  object-fit:cover;
 }
 
-/* TAGS */
-.tag, .episode{
+/* NAME */
+.name{
+  text-align:center;
+  padding:7px;
+  font-weight:bold;
+  font-size: 15px;
+}
+
+/* TAG (TOP LEFT) */
+.tag{
   position:absolute;
+  top:8px;
+  left:8px;
   background:#facc15;
   color:black;
-  font-size:11px;
-  padding:4px 8px;
+  font-size:10px;
+  padding:3px 6px;
   border-radius:6px;
   font-weight:bold;
 }
 
-.tag{
-  top:8px;
-  left:8px;
+/* EP (BOTTOM LEFT FIXED) */
+.ep{
+  position:absolute;
+  bottom:8px;   /* 🔥 FIX */
+  left:8px;     /* 🔥 FIX */
+
+  background:#facc15;
+  color:#000000;
+  font-size:10px;
+  padding:3px 6px;
+  border-radius:6px;
+  font-weight:bold;
 }
 
-.episode{
-  bottom:8px;
+/* FLOATING */
+.floating{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  background:#3038D3;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  font-size:20px;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">AnimeXHub</div>
+  <div class="profile">👤</div>
+</header>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search anime...">
+  <div id="suggestions" class="suggestions"></div>
+</div>
+
+<!-- BATCH -->
+<div class="batch">Latest Anime</div>
+
+<div class="container">
+  <div id="animeGrid" class="anime-grid"></div>
+</div>
+
+<!-- FLOATING -->
+<div class="floating">📺</div>
+
+<script src="anime-data.js"></script>
+
+<script>
+
+const input = document.getElementById("searchInput");
+const box = document.getElementById("suggestions");
+const grid = document.getElementById("animeGrid");
+
+/* RENDER */
+function renderHome(){
+  grid.innerHTML = "";
+
+  animeData.forEach(anime => {
+    grid.innerHTML += `
+      <div class="card-wrap">
+        <a href="${anime.link}">
+          <div class="card">
+            <img src="${anime.img}">
+            <div class="tag">${anime.tag || "Anime"}</div>
+            <div class="ep">${anime.ep || ""}</div>
+          </div>
+        </a>
+        <div class="name">${anime.name}</div>
+      </div>
+    `;
+  });
+}
+renderHome();
+
+/* SEARCH */
+input.addEventListener("input", function(){
+  let value = this.value.toLowerCase().trim();
+  box.innerHTML = "";
+
+  if(value.length < 2){
+    box.style.display = "none";
+    return;
+  }
+
+  let found = 0;
+
+  animeData.forEach(anime => {
+    if(anime.name.toLowerCase().includes(value)){
+      box.innerHTML += `
+        <div class="suggestion-item" onclick="goSearch('${anime.name}')">
+          ${anime.name}
+        </div>
+      `;
+      found++;
+    }
+  });
+
+  box.style.display = found ? "block" : "none";
+});
+
+/* ENTER SEARCH */
+input.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    let value = input.value.trim();
+    if(value){
+      localStorage.setItem("animeSearch", value);
+      window.location.href = "search.html";
+    }
+  }
+});
+
+window.goSearch = function(name){
+  localStorage.setItem("animeSearch", name);
+  window.location.href = "search.html";
+};
+
+document.addEventListener("click", e=>{
+  if(!e.target.closest(".search-box")){
+    box.style.display = "none";
+  }
+});
+
+</script>
+
+</body>
+</html>  bottom:8px;
   left:8px;
 }
 
