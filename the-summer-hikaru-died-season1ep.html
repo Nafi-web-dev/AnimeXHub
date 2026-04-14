@@ -6,63 +6,80 @@
 <title>The Summer Hikaru Died Episodes</title>
 
 <style>
-  body{
-    margin:0;
-    font-family: system-ui, sans-serif;
-    background:#0b1220;
-    color:white;
-    text-align:center;
-  }
+body{
+  margin:0;
+  font-family: system-ui, sans-serif;
+  background:#0b1220;
+  color:white;
+  text-align:center;
+}
 
-  .container{
-    max-width:500px;
-    margin:auto;
-    padding:20px;
-  }
+.container{
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+}
 
-  h2{
-    margin-bottom:15px;
-    color:#facc15;
-  }
+h2{
+  margin-bottom:15px;
+  color:#facc15;
+}
 
-  .top-watch{
-    display:inline-block;
-    margin-bottom:20px;
-    padding:10px 20px;
-    background:#C50303;
-    border-radius:10px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    font-size:16px;
-  }
+/* 🔥 BUTTON BASE */
+.btn{
+  display:inline-block;
+  margin-bottom:20px;
+  padding:10px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  transition:0.25s ease;
+}
 
-  .ep{
-    padding:18px 10px;
-    border-bottom:1px solid #1f2937;
-  }
+/* WATCH */
+.watch{
+  background:#C50303;
+}
 
-  .ep-title{
-    font-size:20px;
-    margin-bottom:10px;
-    font-weight:bold;
-  }
+/* DOWNLOAD */
+.download{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  background:#006DE4;
+  transition:0.25s ease;
+}
 
-  .download{
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:8px;
-    text-decoration:none;
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    background:#006DE4;
-  }
+/* 🔥 HOVER EFFECT */
+.watch:hover{
+  background:#ff0000;
+  box-shadow:0 0 12px #ff0000, 0 0 25px #ff0000;
+  transform:scale(1.05);
+}
 
-  .download:hover{
-    opacity:0.8;
-  }
+.download:hover{
+  background:#0080ff;
+  box-shadow:0 0 12px #0080ff, 0 0 25px #0080ff;
+  transform:scale(1.05);
+}
 
+/* EP LIST */
+.ep{
+  padding:18px 10px;
+  border-bottom:1px solid #1f2937;
+}
+
+.ep-title{
+  font-size:20px;
+  margin-bottom:10px;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -72,25 +89,25 @@
 
   <h2>The Summer Hikaru Died</h2>
 
-  <!-- TOP WATCH ONLINE -->
-  <a class="top-watch" href="https://www.desidubanime.me/anime/hik-ga-shi-natzb1hyzialm/" target="_blank" rel="noopener noreferrer">
+  <!-- 🔥 FIX: btn + watch class added -->
+  <a class="btn watch" href="https://www.desidubanime.me/anime/hik-ga-shi-natzb1hyzialm/" target="_blank">
     ▶ Watch Online
   </a>
 
   <!-- EPISODES -->
 
-  <div class="ep"><div class="ep-title">Episode 1</div><a class="download" href="https://hubcloud.foo/drive/rrq5fxqdrxyyfqo" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 2</div><a class="download" href="https://hubcloud.foo/drive/jue13jjj6h6bss9" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 3</div><a class="download" href="https://hubcloud.foo/drive/azc01xrhh8ibxuh" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 4</div><a class="download" href="https://hubcloud.foo/drive/s0egtolj8rx87se" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 5</div><a class="download" href="https://hubcloud.foo/drive/9cammsao92z93pl" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 6</div><a class="download" href="https://hubcloud.foo/drive/1ih41ke1yqe9nki" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 7</div><a class="download" href="https://hubcloud.foo/drive/8xkwwdlxv4l2nv6" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 8</div><a class="download" href="https://hubcloud.foo/drive/ffhyftiga8uwhfu" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 9</div><a class="download" href="https://hubcloud.foo/drive/eeoomklkxwjre1q" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 10</div><a class="download" href="https://hubcloud.foo/drive/5paqllpwkd5adqw" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 11</div><a class="download" href="https://hubcloud.foo/drive/ohvia1qi097pchd" target="_blank" rel="noopener noreferrer">Download</a></div>
-  <div class="ep"><div class="ep-title">Episode 12</div><a class="download" href="https://hubcloud.foo/drive/mthjvg1dhokbbmn" target="_blank" rel="noopener noreferrer">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 1</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 2</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 3</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 4</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 5</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 6</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 7</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 8</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 9</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 10</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 11</div><a class="download" href="#">Download</a></div>
+  <div class="ep"><div class="ep-title">Episode 12</div><a class="download" href="#">Download</a></div>
 
 </div>
 
