@@ -1,5 +1,19 @@
 const animeData = [
   {
+    name: "Attack on Titan",
+    img: "Attack on Titan.jpeg",
+    link: "Attack on Titan.html",
+    tag: "Multi-Audio",
+    ep: "S2-EP6"
+  },
+  {
+    name: "Grand Blue Dreaming",
+    img: "Grand Blue Dreaming.jpeg",
+    link: "Grand Blue Dreaming.html",
+    tag: "Multi-Audio",
+    ep: "S1-EP6"
+  },
+  {
     name: "Fullmetal Alchemist: Brotherhood",
     img: "Fullmetal Alchemist: Brotherhood.jpeg",
     link: "Fullmetal-Alchemist-Brotherhood-season.html",
