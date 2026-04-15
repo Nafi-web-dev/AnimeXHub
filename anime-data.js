@@ -1,10 +1,17 @@
 const animeData = [
   {
+    name: "Fullmetal Alchemist: Brotherhood",
+    img: "Fullmetal Alchemist: Brotherhood.jpeg",
+    link: "Fullmetal-Alchemist-Brotherhood-season.html",
+    tag: "Multi-Audio",
+    ep: "S1-EP15"
+  },
+  {
     name: "Release That Witch",
     img: "release-that-witch.jpeg",
     link: "release-that-witch-season.html",
     tag: "Multi-Audio",
-    ep: "S1-EP12"
+    ep: "S1-EP4"
   },
   {
     name: "You and I Are Polar Opposites",
