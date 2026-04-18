@@ -1,96 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attack on Titan Seasons</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack on Titan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: #070012;
+            color: white;
+        }
 
-<style>
-  body{
-    margin:0;
-    font-family: system-ui, sans-serif;
-    background:#0b1220;
-    color:white;
-    text-align:center;
-  }
+        /* TOP SECTION */
+        .top {
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 85% 20%, rgba(120,0,255,0.35), transparent 45%),
+                        linear-gradient(to bottom, #0b001a, #070012);
+        }
 
-  .container{
-    max-width:500px;
-    margin:auto;
-    padding:20px;
-  }
+        .top::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 0;
+        }
 
-  h2{
-    margin-bottom:20px;
-    color:#facc15;
-  }
+        .top::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, #070012 80%);
+            z-index: 1;
+        }
 
-  .season{
-    padding:20px 10px;
-    border-bottom:1px solid #1f2937;
-  }
+        /* WRAPPER FIX */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: block; /* Flex সরিয়ে Block করা হয়েছে */
+        }
 
-  .season-title{
-    font-size:20px;
-    margin-bottom:10px;
-    font-weight:bold;
-  }
+        .poster {
+            width: 110px; /* মোবাইল এবং ডেস্কটপের জন্য সামঞ্জস্যপূর্ণ সাইজ */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(120,0,255,0.4);
+            float: left; /* ইমেজ বামে থাকবে */
+            margin-right: 15px; /* ইমেজের ডানে গ্যাপ */
+            margin-bottom: 10px; /* নিচে গ্যাপ যাতে টেক্সট লেগে না যায় */
+        }
 
-  .btn{
-    display:inline-block;
-    margin:5px;
-    padding:10px 20px;
-    border-radius:10px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    font-size:15px;
-    transition:0.25s ease;
-  }
+        .info {
+            display: block; /* কন্টেন্ট যাতে ইমেজকে ঘিরে থাকে */
+        }
 
-  .watch{
-    background:#C60000;
-  }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-  .download{
-    background:#006DE4;
-  }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-  .watch:hover{
-    background:#ff0000;
-    box-shadow:0 0 12px #ff0000, 0 0 25px #ff0000;
-    transform:scale(1.05);
-  }
+        .star {
+            color: #facc15;
+        }
 
-  .download:hover{
-    background:#0080ff;
-    box-shadow:0 0 12px #0080ff, 0 0 25px #0080ff;
-    transform:scale(1.05);
-  }
+        .small {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
 
-</style>
+        /* TAGS FIX */
+        .tags {
+            display: block; /* যাতে ট্যাগগুলো ইমেজের নিচে চলে আসলে বামে সরে আসে */
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #facc15;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 8px; /* ট্যাগগুলোর মাঝে ভার্টিক্যাল গ্যাপ */
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .latest {
+            margin-top: 15px;
+            color: #facc15;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            clear: both; /* নিশ্চিত করবে এটি যেন ইমেজের নিচে থাকে */
+        }
+
+        /* DESCRIPTION */
+        .desc {
+            padding: 15px;
+            font-size: 15px;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* SEASON SECTION */
+        .container {
+            padding: 10px 20px 30px;
+        }
+
+        .season {
+            padding: 20px 10px;
+            border-bottom: 1px solid #1f2937;
+            text-align: center;
+        }
+
+        .season-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.25s ease;
+            text-align: center;
+        }
+
+        .watch { background: #C60000; }
+        .download { background: #006DE4; }
+
+        .watch:hover {
+            background: #ff0000;
+            box-shadow: 0 0 12px #ff0000;
+            transform: scale(1.05);
+        }
+
+        .download:hover {
+            background: #0080ff;
+            box-shadow: 0 0 12px #0080ff;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .poster {
+                width: 95px;
+            }
+            .title {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+<div class="top">
+    <div class="content-wrapper clearfix">
+        <img class="poster" src="Attack on Titan.jpeg" alt="Poster">
+        
+        <div class="info">
+            <div class="title">Attack on Titan</div>
+            <div class="rating"><span class="star">⭐</span> 8.57</div>
+            <div class="small">2013</div>
 
-  <h2>Attack on Titan</h2>
+            <div class="tags">
+                <span class="tag">Action</span>
+                <span class="tag">Anime</span>
+                <span class="tag">Drama</span>
+                <span class="tag">Gore</span>
+                <span class="tag">Hindi Dub</span>
+                <span class="tag">Military</span>
+                <span class="tag">Muse India Dub</span>
+                <span class="tag">Shounen</span>
+                <span class="tag">Survival</span>
+                <span class="tag">Suspense</span>
+                <span class="tag">Tamil</span>
+                <span class="tag">Telugu</span>
+            </div>
 
-  <!-- SEASON 1 -->
-  <div class="season">
-    <div class="season-title">Season 1</div>
-    <a class="btn watch" href="https://www.desidubanime.me/anime/attack-on-titan-season-1/" target="_blank">Watch</a>
-    <a class="btn download" href="Attack on Titan-s1.html" target="_blank">Download</a>
-  </div>
+            <div class="small">2 Seasons 31 Episodes</div>
+        </div>
+    </div>
 
-  <!-- SEASON 2 -->
-  <div class="season">
-    <div class="season-title">Season 2</div>
-    <a class="btn watch" href="https://www.desidubanime.me/anime/attack-on-titan-season-1/" target="_blank">Watch</a>
-    <a class="btn download" href="Attack on Titan-s2.html" target="_blank">Download</a>
-  </div>
-
+    <div class="latest">
+        Go To Latest Episode : Season 2 Episode 6
+    </div>
 </div>
+
+<div class="desc">
+    100 years ago, the last remnants of humanity were forced to retreat behind the towering walls of a fortified city to escape the massive, man-eating Titans that roamed the land outside their fortress. Only the members of the Scouting Legion dared to stray beyond the safety of the walls – but even those brave warriors seldom returned alive. Those within the city clung to the illusion of a peaceful existence until the day that dream was shattered, and their slim chance at survival was reduced to one horrifying choice: kill – or be devoured!
+</div>
+
+<div class="container">
+    <div class="season">
+        <div class="season-title">Season 1</div>
+        <a class="btn watch" href="https://www.desidubanime.me/anime/attack-on-titan-season-1/" target="_blank">Watch</a>
+        <a class="btn download" href="Attack on Titan-s1.html" target="_blank">Download</a>
+    </div>
+    <div class="season">
+        <div class="season-title">Season 2</div>
+        <a class="btn watch" href="https://www.desidubanime.me/anime/attack-on-titan-season-2/" target="_blank">Watch</a>
+        <a class="btn download" href="Attack on Titan-s2.html" target="_blank">Download</a>
+    </div>
+</div>
+
 </body>
 </html>
